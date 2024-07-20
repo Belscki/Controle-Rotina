@@ -105,6 +105,7 @@ class FrontEnd(BackEnd):
             bg="#0DFF09",
             text="+",
             font=('verdana', 16, 'bold'),
+            command=self.add_cliente
             )
         
         self.btnCriar.place(
@@ -119,7 +120,8 @@ class FrontEnd(BackEnd):
             bd=2,
             bg="#A12020",
             text="-",
-            font=('verdana', 16, 'bold')
+            font=('verdana', 16, 'bold'),
+            # command=self.exclude_cliente
             )
         
         self.btnApagar.place(
@@ -138,6 +140,17 @@ class FrontEnd(BackEnd):
         self.Entrydia.place(
             relx= 0.05,
             rely= 0.3,
+            relwidth= 0.05,
+            relheight= 0.25
+        )
+        self.EntryID = Entry(
+            self.middleframe,
+            highlightbackground="black",
+            highlightthickness="2"
+        )
+        self.EntryID.place(
+            relx= 0.05,
+            rely= 0.65,
             relwidth= 0.05,
             relheight= 0.25
         )
@@ -179,21 +192,23 @@ class FrontEnd(BackEnd):
         self.Lista = ttk.Treeview(
             self.bottomframe,
             height= 3,
-            columns=("col1","col2","col3","col4")
+            columns=("col1","col2","col3","col4","col5")
             )
     
         
-        self.Lista.heading("#0", text="ID")
-        self.Lista.heading("col1", text="dia")
-        self.Lista.heading("col2", text="title")
-        self.Lista.heading("col3", text="desc")
-        self.Lista.heading("col4", text="status")
+        self.Lista.heading("#0", text="")
+        self.Lista.heading("#1", text="ID")
+        self.Lista.heading("#2", text="dia")
+        self.Lista.heading("#3", text="title")
+        self.Lista.heading("#4", text="desc")
+        self.Lista.heading("#5", text="status")
 
-        self.Lista.column("#0", width=25)
-        self.Lista.column("col1", width=25)
-        self.Lista.column("col2", width=150)
-        self.Lista.column("col3", width=250)
-        self.Lista.column("col4", width=50)
+        self.Lista.column("#0", width=-100)
+        self.Lista.column("#1", width=10)
+        self.Lista.column("#2", width=10)
+        self.Lista.column("#3", width=50)
+        self.Lista.column("#4", width=250)
+        self.Lista.column("#5", width=50)
 
         self.Lista.place(
             relx= 0,

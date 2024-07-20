@@ -42,5 +42,27 @@ class BackEnd():
             ORDER BY dia ASC;""")
         #Espaço vazio em baio por conta do espaço vazio na tree view
         for i in lista:
-            self.ListaCli.insert("", END, values=i)
+            self.Lista.insert("", END, values=i)
         self.DesConnectDb()
+
+    def add_cliente(self):
+        self.dia = self.Entrydia.get()
+        self.title = self.Entrytitle.get()
+        self.desc = self.Entrydesc.get()
+        self.status = self.Entrystatus.get()
+
+        self.ConnectDb()
+        self.cursor.execute(""" INSERT INTO dias (dia, title, desc, status)
+                            VALUES(?,?,?,?)""", (self.dia, self.title, self.desc, self.status))
+        self.conn.commit()
+        self.DesConnectDb()
+        self.select_lista()
+        
+    # def exclude_cliente(self):
+    #     self.id = self.EntryID.get()
+
+    #     self.ConnectDb()
+    #     self.cursor.execute(""" DELETE FROM dias WHERE ID = ?""", (self.id))
+    #     self.conn.commit()
+    #     self.DesConnectDb()
+    #     self.select_lista()
