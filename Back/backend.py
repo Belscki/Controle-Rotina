@@ -3,6 +3,7 @@ from tkinter import ttk
 import time
 import sqlite3
 
+
 class BackEnd():
     def atualizar_data(self):
         self.tempo_atual = time.time()
@@ -13,7 +14,7 @@ class BackEnd():
             font= ('verdana', 30, 'bold'), 
             bg= "#A7C1C9"
             )
-    
+
     def ConnectDb(self):
         self.conn = sqlite3.connect("dias.db")
         self.cursor = self.conn.cursor()
@@ -41,6 +42,7 @@ class BackEnd():
         self.desc = self.Entrydesc.get()
         self.status = self.Entrystatus.get()
         self.id = self.EntryID.get()
+        
         
     def select_lista(self):
         self.Lista.delete(*self.Lista.get_children())

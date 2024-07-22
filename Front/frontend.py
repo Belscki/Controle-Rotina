@@ -1,7 +1,8 @@
-from tkinter import *
+from tkinter import * 
 from tkinter import ttk
+import tkinter as tk
 from Back.backend import BackEnd
-
+from Back.config import PlaceholderEntry
 
 root = Tk()
 style = ttk.Style()
@@ -147,11 +148,16 @@ class FrontEnd(BackEnd):
             relheight= 0.25
             )
 
+
     def Entrys(self):
         self.Entrydia = Entry(
             self.middleframe,
             highlightbackground="black",
-            highlightthickness="2"
+            highlightthickness="2",
+        )
+        self.Entrydia = PlaceholderEntry(
+            self.middleframe,
+            placeholder='dia'
         )
         self.Entrydia.place(
             relx= 0.05,
@@ -164,6 +170,10 @@ class FrontEnd(BackEnd):
             highlightbackground="black",
             highlightthickness="2"
         )
+        self.EntryID = PlaceholderEntry(
+            self.middleframe,
+            placeholder='ID'
+        )
         self.EntryID.place(
             relx= 0.05,
             rely= 0.65,
@@ -174,6 +184,10 @@ class FrontEnd(BackEnd):
             self.middleframe,
             highlightbackground="black",
             highlightthickness="2"
+        )
+        self.Entrytitle = PlaceholderEntry(
+            self.middleframe,
+            placeholder='Titulo'
         )
         self.Entrytitle.place(
             relx= 0.125,
@@ -186,6 +200,10 @@ class FrontEnd(BackEnd):
             highlightbackground="black",
             highlightthickness="2"
         )
+        self.Entrydesc = PlaceholderEntry(
+            self.middleframe,
+            placeholder='Descrição'
+        )
         self.Entrydesc.place(
             relx= 0.3,
             rely= 0.3,
@@ -196,6 +214,10 @@ class FrontEnd(BackEnd):
             self.middleframe,
             highlightbackground="black",
             highlightthickness="2"
+        )
+        self.Entrystatus = PlaceholderEntry(
+            self.middleframe,
+            placeholder='status'
         )
         self.Entrystatus.place(
             relx= 0.75,
@@ -265,3 +287,4 @@ class FrontEnd(BackEnd):
             )
 
         self.style.map("Treeview")
+
