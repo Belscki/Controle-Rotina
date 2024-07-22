@@ -14,8 +14,9 @@ class App(FrontEnd):
         self.TabelaBDD()
         self.select_lista()
         self.Entrys()
+        self.BDDvariaveis()
         self.add_cliente()
-        # self.exclude_cliente()
+        self.exclude_cliente()
         root.mainloop()
 
 App()

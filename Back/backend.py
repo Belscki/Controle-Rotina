@@ -35,6 +35,13 @@ class BackEnd():
         self.conn.commit();
         self.DesConnectDb()
 
+    def BDDvariaveis(self):
+        self.dia = self.Entrydia.get()
+        self.title = self.Entrytitle.get()
+        self.desc = self.Entrydesc.get()
+        self.status = self.Entrystatus.get()
+        self.id = self.EntryID.get()
+        
     def select_lista(self):
         self.Lista.delete(*self.Lista.get_children())
         self.ConnectDb()
@@ -46,10 +53,7 @@ class BackEnd():
         self.DesConnectDb()
 
     def add_cliente(self):
-        self.dia = self.Entrydia.get()
-        self.title = self.Entrytitle.get()
-        self.desc = self.Entrydesc.get()
-        self.status = self.Entrystatus.get()
+        self.BDDvariaveis()
 
         self.ConnectDb()
         self.cursor.execute(""" INSERT INTO dias (dia, title, desc, status)
@@ -58,11 +62,21 @@ class BackEnd():
         self.DesConnectDb()
         self.select_lista()
         
-    # def exclude_cliente(self):
-    #     self.id = self.EntryID.get()
+    def exclude_cliente(self):
+        self.BDDvariaveis()
+        self.ConnectDb()
+        self.cursor.execute(""" DELETE FROM dias WHERE ID = ?""", (self.id,))
+        self.conn.commit()
+        self.DesConnectDb()
+        self.select_lista()
 
-    #     self.ConnectDb()
-    #     self.cursor.execute(""" DELETE FROM dias WHERE ID = ?""", (self.id))
-    #     self.conn.commit()
-    #     self.DesConnectDb()
-    #     self.select_lista()
+    def alterar_cliente(self):
+        self.BDDvariaveis()
+
+        self.ConnectDb()
+        self.cursor.execute(""" UPDATE dias SET dia = ?, title = ?, desc = ?, status = ? WHERE ID = ?""", (self.dia, self.title, self.desc, self.status, self.id))
+        self.conn.commit()
+        self.DesConnectDb()
+        self.select_lista()
+        
+        

@@ -121,11 +121,27 @@ class FrontEnd(BackEnd):
             bg="#A12020",
             text="-",
             font=('verdana', 16, 'bold'),
-            # command=self.exclude_cliente
+            command=self.exclude_cliente
             )
         
         self.btnApagar.place(
             relx= 0.07,
+            rely= 0.35,
+            relwidth= 0.05,
+            relheight= 0.25
+            )
+        
+        self.btnAlterar = Button(
+            self.topframe,
+            bd=2,
+            bg="Yellow",
+            text="/",
+            font=('verdana', 16, 'bold'),
+            command=self.alterar_cliente
+            )
+        
+        self.btnAlterar.place(
+            relx= 0.13,
             rely= 0.35,
             relwidth= 0.05,
             relheight= 0.25
